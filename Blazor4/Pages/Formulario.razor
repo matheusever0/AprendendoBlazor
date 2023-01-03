@@ -1,0 +1,67 @@
+﻿@page "/formulario"
+
+
+<h1>Formulário</h1>
+
+
+<br />
+
+<EditForm Model="_pessoa" OnValidSubmit="FormSubmit">
+    <p>
+        <label>Nome: </label>
+        <InputText @bind-Value="_pessoa.Nome"></InputText>
+    </p>
+
+    <p>
+        <label>Email: </label>
+        <InputText @bind-Value="_pessoa.Email"></InputText>
+    </p>
+
+    <p>
+        <label>Documento: </label>
+        <InputText @bind-Value="_pessoa.Documento"></InputText>
+    </p>
+
+    <p>
+        <label>Anos na Empresa: </label>
+        <InputNumber @bind-Value="_pessoa.AnosNaEmpresa"></InputNumber>
+    </p>
+
+    <p>
+        <label>Aniversário: </label>
+        <InputDate @bind-Value="_pessoa.Aniversario"></InputDate>
+    </p>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <button type="submit" @onclick="FormSubmit">Submeter Formulário</button>
+</EditForm>
+
+
+@if (_success)
+{
+    <div class="text-success">
+        Pessoa inserida com sucesso!
+        @_pessoa.Id
+        @_pessoa.Nome
+
+    </div>
+}
+
+@code {
+    private Pessoa _pessoa = new Pessoa();
+    private bool _success = false;
+
+
+    private async Task FormSubmit()
+    {
+        if (!string.IsNullOrEmpty(_pessoa.Nome))
+        {
+            _pessoa.Id++;
+            //Metodo para inserir entidade pessoa no banco de dados;
+            _success = true;
+        }
+
+    }
+}

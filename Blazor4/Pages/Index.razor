@@ -66,7 +66,7 @@
 
 
 <b>Digite aqui para alterar retirando o focus do input: </b>
-<input type="text" @bind="pessoa.Name" />
+<input type="text" @bind="pessoa.Nome" />
 @*Só altera quando tira o focus o bind (oneway)*@
 <br />
 
@@ -114,7 +114,7 @@
 
     protected void RetornoDosValores()
     {
-        this.Nome = pessoa.Name;
+        this.Nome = pessoa.Nome;
         this.Email = pessoa.Email;
     }
 
@@ -206,6 +206,8 @@
         imageBase64 = Convert.ToBase64String(bytes);
         statusUpload = "Upload feito com sucesso";
     }
+
+
 
 
 }

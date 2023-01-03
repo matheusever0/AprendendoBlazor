@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r8cyDXOCMxEVZKSr2H4LVDtcyAkRZDsLi2pQZLaglgc=",
+  "Hash": "6YsDGAvd+M4HmMPqU4jpGPKeRexPn+BbrF9Z2KDxJS0=",
   "Source": "Blazor4",
   "BasePath": "_content/Blazor4",
   "Mode": "Default",
@@ -287,6 +287,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Severo\\Documents\\GitHub\\AprendendoBlazor\\Blazor4\\wwwroot\\js\\site.js",
+      "SourceId": "Blazor4",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Severo\\Documents\\GitHub\\AprendendoBlazor\\Blazor4\\wwwroot\\",
+      "BasePath": "_content/Blazor4",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
     }
   ]
 }
