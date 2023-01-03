@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="C:\Users\Severo\Documents\GitHub\AprendendoBlazor\AprendendoBlazor\Index.razor" Link="Index.razor" />
+    <PackageReference Include="FsCheck" Version="2.16.5" />
   </ItemGroup>
 
 </Project>

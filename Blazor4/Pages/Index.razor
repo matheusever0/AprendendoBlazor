@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using Blazor4.Model
+
 
 <PageTitle>Index</PageTitle>
 
@@ -63,11 +65,34 @@
 </div>
 
 
+<b>Digite aqui para alterar retirando o focus do input: </b><input type="text" @bind="pessoa.Name"/>
+@*Só altera quando tira o focus o bind (oneway)*@ 
+<br />
+
+<b>Digite aqui o email para alterar inputando os dados</b><input type="text" @bind-value="pessoa.Email" @bind-value:event="oninput" />
+@*Só altera quando tira o focus o bind (twoway)*@ 
+<br />
+
+<button @onclick="RetornoDosValores">Retornar os valores digitados!</button>
+
+
 
 
 @code {
+    private Pessoa pessoa = new Pessoa();
 
-    public string Message { get; set; }
+    protected void RetornoDosValores()
+    {
+        this.Nome = pessoa.Name;
+        this.Email = pessoa.Email;
+    }
+
+
+    public string Message { get; set; } = "";
+
+    public string Nome { get; set; } = "";
+
+    public string Email { get; set; } = "";
 
     protected void OnFocusCustomEvent()
     {
