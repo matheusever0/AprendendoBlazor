@@ -1,0 +1,45 @@
+﻿@page "/countries"
+@using System.Text.Json
+@inject HttpClient Http;
+
+<h1>Countries</h1>
+
+
+<br />
+
+<button class="btn btn-dark" @onclick="GetCountries">Buscar Todos</button>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Currency</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in countryList)
+        {
+            <tr>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<Countries> countryList = new List<Countries>();
+
+    async Task GetCountries()
+    {
+        string key = "c4d2e7073c7ad3b5ce727dae2bf06b6e";
+
+        Http.BaseAddress = new Uri("http://api.countrylayer.com");
+
+        var retornoCliente = await Http.GetAsync($"/v2/all/?access_key={key}");
+
+        var content = await retornoCliente.Content.ReadAsStringAsync();
+
+    }
+
+
+}

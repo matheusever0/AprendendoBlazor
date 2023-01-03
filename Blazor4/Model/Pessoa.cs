@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace Blazor4.Model
 {
     public class Pessoa
