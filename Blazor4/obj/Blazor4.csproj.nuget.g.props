@@ -14,4 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft\Xamarin\NuGet\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)blazorfileuploader\1.0.0\buildTransitive\BlazorFileUploader.props" Condition="Exists('$(NuGetPackageRoot)blazorfileuploader\1.0.0\buildTransitive\BlazorFileUploader.props')" />
+  </ImportGroup>
 </Project>

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorFileUploader" Version="1.0.0" />
     <PackageReference Include="FsCheck" Version="2.16.5" />
   </ItemGroup>
 

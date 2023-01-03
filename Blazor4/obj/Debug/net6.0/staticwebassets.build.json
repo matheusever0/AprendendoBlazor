@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6q/sFvfy7IU0HN0D0utzXkx8Pog0Zk4HgEAfyaIQ5hI=",
+  "Hash": "r8cyDXOCMxEVZKSr2H4LVDtcyAkRZDsLi2pQZLaglgc=",
   "Source": "Blazor4",
   "BasePath": "_content/Blazor4",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Severo\\.nuget\\packages\\blazorfileuploader\\1.0.0\\staticwebassets\\inputfile.js",
+      "SourceId": "BlazorFileUploader",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Severo\\.nuget\\packages\\blazorfileuploader\\1.0.0\\staticwebassets\\",
+      "BasePath": "_content/BlazorFileUploader",
+      "RelativePath": "inputfile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Severo\\.nuget\\packages\\blazorfileuploader\\1.0.0\\staticwebassets\\inputfile.js"
+    },
     {
       "Identity": "C:\\Users\\Severo\\Documents\\GitHub\\AprendendoBlazor\\Blazor4\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Blazor4.styles.css",
       "SourceId": "Blazor4",

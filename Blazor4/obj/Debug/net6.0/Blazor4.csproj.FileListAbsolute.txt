@@ -55,3 +55,4 @@ C:\Users\Severo\Documents\GitHub\AprendendoBlazor\Blazor4\obj\Debug\net6.0\scope
 C:\Users\Severo\Documents\GitHub\AprendendoBlazor\Blazor4\obj\Debug\net6.0\Blazor4.csproj.CopyComplete
 C:\Users\Severo\Documents\GitHub\AprendendoBlazor\Blazor4\obj\Debug\net6.0\Blazor4.genruntimeconfig.cache
 C:\Users\Severo\Documents\GitHub\AprendendoBlazor\Blazor4\obj\Debug\net6.0\ref\Blazor4.dll
+C:\Users\Severo\Documents\GitHub\AprendendoBlazor\Blazor4\bin\Debug\net6.0\BlazorFileUploader.dll
