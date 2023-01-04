@@ -1,5 +1,6 @@
 ﻿@page "/countries"
 @using System.Text.Json
+@using System.Net
 @inject HttpClient Http;
 
 <h1>Countries</h1>
@@ -31,15 +32,17 @@
 
     async Task GetCountries()
     {
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+
         string key = "c4d2e7073c7ad3b5ce727dae2bf06b6e";
 
-        Http.BaseAddress = new Uri("http://api.countrylayer.com");
-
-        var retornoCliente = await Http.GetAsync($"/v2/all/?access_key={key}");
+        var retornoCliente = await Http.GetAsync($"http://api.countrylayer.com/v2/all/?access_key={key}");
 
         var content = await retornoCliente.Content.ReadAsStringAsync();
 
     }
+
 
 
 }

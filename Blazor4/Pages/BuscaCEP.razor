@@ -1,0 +1,62 @@
+﻿@page "/buscacep"
+@using Newtonsoft.Json
+@inject HttpClient Http;
+
+
+
+<h1>BuscaCEP</h1>
+
+<br />
+<div class="row">
+    <div class="col-2 text-right">
+        <b>Digite o cep que seja consultar: </b>
+    </div>
+    <div class="col-6">
+        <input type="text" @bind-value="numeroCep" @bind-value:event="oninput" />
+    </div>
+</div>
+<button class="btn btn-dark" @onclick="GetCeps">Buscar CEP</button>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>State</th>
+            <th>City</th>
+            <th>District</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>@cep.Code</th>
+            <th>@cep.State</th>
+            <th>@cep.City</th>
+            <th>@cep.District</th>
+            <th>@cep.Address</th>
+        </tr>
+
+    </tbody>
+</table>
+
+
+@code {
+#nullable disable
+    public string numeroCep { get; set; }
+    public string Message { get; set; }
+    private CEP cep = new CEP();
+
+
+    async Task GetCeps()
+    {
+        var RetornoCep = await Http.GetAsync($"https://cdn.apicep.com/file/apicep/{numeroCep}.json");
+
+        Message = await RetornoCep.Content.ReadAsStringAsync();
+
+        cep = JsonConvert.DeserializeObject<CEP>(Message);
+
+    }
+
+
+}

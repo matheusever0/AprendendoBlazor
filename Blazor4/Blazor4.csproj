@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="BlazorFileUploader" Version="1.0.0" />
     <PackageReference Include="FsCheck" Version="2.16.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
