@@ -22,13 +22,17 @@
         @foreach (var item in countryList)
         {
             <tr>
+               
             </tr>
         }
     </tbody>
 </table>
 
+ @retorno
+
 @code {
     List<Countries> countryList = new List<Countries>();
+    string retorno = "";
 
     async Task GetCountries()
     {
@@ -39,7 +43,7 @@
 
         var retornoCliente = await Http.GetAsync($"http://api.countrylayer.com/v2/all/?access_key={key}");
 
-        var content = await retornoCliente.Content.ReadAsStringAsync();
+        retorno = await retornoCliente.Content.ReadAsStringAsync();
 
     }
 

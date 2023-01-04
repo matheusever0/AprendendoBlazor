@@ -1,71 +1,129 @@
 ﻿@page "/formulario"
+@using Blazor4.Repository
 
 
 <h1>Formulário</h1>
 
 
 <br />
+@if (listaDePessoas.Any())
+{
+    <table class="table">
 
-<EditForm Model="_pessoa" OnValidSubmit="FormSubmit">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in listaDePessoas)
+            {
+                <tr>
+
+                    <th>@item.Nome</th>
+                    <th>@item.Email</th>
+                    <td>
+                        <a class="btn btn-dark" @onclick="@(e => BuscarDados(item.Id))">Editar</a>
+                        <a class="btn btn-danger" @onclick="@(e => Deletar(item.Id))">Deletar</a>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<br />
+<br />
+
+
+
+<EditForm Model="pessoa" OnValidSubmit="FormSubmit">
     <p>
         <label>Nome: </label>
-        <InputText @bind-Value="_pessoa.Nome"></InputText>
+        <InputText @bind-Value="pessoa.Nome"></InputText>
     </p>
 
     <p>
         <label>Email: </label>
-        <InputText @bind-Value="_pessoa.Email"></InputText>
+        <InputText @bind-Value="pessoa.Email"></InputText>
     </p>
 
     <p>
         <label>Documento: </label>
-        <InputText @bind-Value="_pessoa.Documento"></InputText>
+        <InputText @bind-Value="pessoa.Documento"></InputText>
     </p>
 
     <p>
         <label>Anos na Empresa: </label>
-        <InputNumber @bind-Value="_pessoa.AnosNaEmpresa"></InputNumber>
+        <InputNumber @bind-Value="pessoa.AnosNaEmpresa"></InputNumber>
     </p>
 
     <p>
         <label>Aniversário: </label>
-        <InputDate @bind-Value="_pessoa.Aniversario"></InputDate>
+        <InputDate @bind-Value="pessoa.Aniversario"></InputDate>
     </p>
 
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <button type="submit" @onclick="FormSubmit">Submeter Formulário</button>
+    <button type="submit" @onclick="FormSubmit">Salvar</button>
 </EditForm>
-
-
-@if (_success)
-{
-    <div class="text-success">
-        Pessoa inserida com sucesso!
-        @_pessoa.Id
-        @_pessoa.Nome
-
-    </div>
-}
 
 @code {
 
-    #nullable disable
+#nullable disable
 
 
-    private Pessoa _pessoa = new Pessoa();
-    private bool _success = false;
+    List<Pessoa> listaDePessoas = new List<Pessoa>();
+    PessoaRepository pessoaRep = new PessoaRepository();
+    Pessoa pessoa = new Pessoa();
 
+    protected override async Task OnInitializedAsync()
+    {
+        listaDePessoas = await pessoaRep.List();
+    }
 
     private async Task FormSubmit()
     {
-        if (!string.IsNullOrEmpty(_pessoa.Nome))
+        if (pessoa.Id > 0)
         {
-            _pessoa.Id++;
-            //Metodo para inserir entidade pessoa no banco de dados;
-           _success = true;
+            await pessoaRep.Edit(pessoa);
+        }
+        else
+        {
+            await pessoaRep.Create(pessoa);
         }
 
+        await CarregarDados();
+    }
+
+    private async Task BuscarDados(int id)
+    {
+        if (id > 0)
+        {
+            pessoa = await pessoaRep.Get(id);
+        }
+
+    }
+
+    private async Task Deletar(int id)
+    {
+        if (id > 0)
+        {
+            await pessoaRep.Delete(id);
+        }
+
+        await CarregarDados();
+
+    }
+
+    private async Task CarregarDados()
+    {
+        pessoa = new Pessoa();
+        listaDePessoas = await pessoaRep.List();
+        StateHasChanged();
     }
 }
